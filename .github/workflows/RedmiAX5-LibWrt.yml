@@ -1,0 +1,21 @@
+name: RedmiAX5-LibWrt-NoWiFi-NSS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Build:
+    uses: ./.github/workflows/Build-OpenWrt.yml
+    permissions:
+      contents: write
+      actions: write
+    with:
+      repo_url: https://github.com/LiBwrt/LibWrt.git
+      repo_branch: 25.12-nss
+      config_file: configs/RedmiAX5.NoWiFi.config
+      firmware_tag: RedmiAX5-NoWiFi-NSS
+      kernel_file: kernel-6.12
+      artifact_prefix: RedmiAX5-NoWiFi-NSS
+      manifest_file: libwrt-qualcommax-ipq60xx.manifest
+      release_summary: "Redmi AX5 NoWiFi Full-NSS 11.4 kernel 6.12; includes ddns-go, KMS vlmcsd, UPnP, DDNS, WOL, Samba4, acme, WireGuard, frp, diskman, PassWall; Aurora theme"
+      rename_qualcommax_to_nowifi: true
